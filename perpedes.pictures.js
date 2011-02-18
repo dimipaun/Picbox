@@ -1708,6 +1708,7 @@
                         'top' :  row_top,
                         'width' : row_width,
                         'height' : row_height,
+                        'bottom' : row_top + row_height, 
                         'show' : false,
                         'cols' : row_images
                     }
@@ -1751,6 +1752,7 @@
             'top' :  row_top,
             'width' : row_width,
             'height' : row_height,
+            'bottom' : row_top + row_height, 
             'show' : false,
             'cols' : row_images
         }
