@@ -1675,8 +1675,8 @@
             if ( top <= row.top && row.top <= top+height && row.show == false){
                 row.show = true;
                 for ( var j = 0; j < row.cols.length; j++){
-                    var url = autogessPicUrl(search_result.pics[row.cols[j].index], sz);
-                    $('#img-'+row.cols[j].index).attr('src',url);
+                    $('#img-'+row.cols[j].index).attr('src', 
+                        autogessPicUrl(search_result.pics[row.cols[j].index], sz));
                 }
                 
             }
