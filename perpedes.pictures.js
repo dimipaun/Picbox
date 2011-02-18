@@ -1665,101 +1665,101 @@
 
 
     function displayImages(sz){
-	    
-		var top = $('#zb-sall-scroll').scrollTop();
-		var height = $('#zb-sall-scroll').height();
-	
-		for ( var i = 0; i < imagesLayout.length; i++){
-			var row = imagesLayout[i];
+        
+        var top = $('#zb-sall-scroll').scrollTop();
+        var height = $('#zb-sall-scroll').height();
+    
+        for ( var i = 0; i < imagesLayout.length; i++){
+            var row = imagesLayout[i];
 
-			if ( top <= row.top && row.top <= top+height && row.show == false){
-				row.show = true;
-				for ( var j = 0; j < row.cols.length; j++){
-					var url = autogessPicUrl(search_result.pics[row.cols[j].index], sz);
-					$('#img-'+row.cols[j].index).attr('src',url);
-				}
-				
-			}
-		}
+            if ( top <= row.top && row.top <= top+height && row.show == false){
+                row.show = true;
+                for ( var j = 0; j < row.cols.length; j++){
+                    var url = autogessPicUrl(search_result.pics[row.cols[j].index], sz);
+                    $('#img-'+row.cols[j].index).attr('src',url);
+                }
+                
+            }
+        }
     }
     
     function populateImageObjects(sz){
-	    
-	var image_tags = $("#zb-sall-content > a > img");
-
-	
-	imagesLayout = [];
-	var insert_images = true;
-	var row_images = [];
-	var row_top = 32000;
-	var row_height = 0 ;
-	var row_width = 0;
-	var row_image = {};
-		
-	image_tags.each(function(index) {
-		
-		var position = $(this).position();
-		var height = $(this).attr( "height" );
-		var width = $(this).attr( "width" );
-		
-		if ( index > 0 &&  !insert_images )
-			row_images.push(row_image);
-		if ( insert_images ){
-			if (  index > 0){
-				var row = {
-					'top' :  row_top,
-					'width' : row_width,
-					'height' : row_height,
-					'show' : false,
-					'cols' : row_images
-				}
-				imagesLayout.push(row);
-			}
-			
-			//initalize for new line
-			row_images = [];
-			row_top = position.top;
-			row_height = 0 ;
-			row_width = 0;
-		}
-		if ( index > 0 &&  insert_images )
-			row_images.push(row_image);
-		
-		row_width += width;
-		
-		//Check if we have to insert a new row
-		if (  position.top > row_top+row_height )
-			insert_images = true;
-		else
-			insert_images = false;
-		if ( position.top < row_top)
-			row_top = position.top;
-		if ( height > row_height)
-			row_height = height;
-		
-		$(this).attr( "id",'img-'+index );
-		row_image = {
-			"left" : position.left,
-			"top" : position.top,
-			"index" : index,
-			"width" : width,
-			"height"  : height
-		}
-		
-	});	
-	
-	row_images.push(row_image);
-	var row = {
-		'top' :  row_top,
-		'width' : row_width,
-		'height' : row_height,
-		'show' : 'false',
-		'cols' : row_images
-	}
-	imagesLayout.push(row);
-	
-	//call the display images method to show the visible lines
-	displayImages(sz);
+        
+        var image_tags = $("#zb-sall-content > a > img");
+    
+        
+        imagesLayout = [];
+        var insert_images = true;
+        var row_images = [];
+        var row_top = 32000;
+        var row_height = 0 ;
+        var row_width = 0;
+        var row_image = {};
+            
+        image_tags.each(function(index) {
+            
+            var position = $(this).position();
+            var height = $(this).attr( "height" );
+            var width = $(this).attr( "width" );
+            
+            if ( index > 0 &&  !insert_images )
+                row_images.push(row_image);
+            if ( insert_images ){
+                if (  index > 0){
+                    var row = {
+                        'top' :  row_top,
+                        'width' : row_width,
+                        'height' : row_height,
+                        'show' : false,
+                        'cols' : row_images
+                    }
+                    imagesLayout.push(row);
+                }
+                
+                //initalize for new line
+                row_images = [];
+                row_top = position.top;
+                row_height = 0 ;
+                row_width = 0;
+            }
+            if ( index > 0 &&  insert_images )
+                row_images.push(row_image);
+            
+            row_width += width;
+            
+            //Check if we have to insert a new row
+            if (  position.top > row_top+row_height )
+                insert_images = true;
+            else
+                insert_images = false;
+            if ( position.top < row_top)
+                row_top = position.top;
+            if ( height > row_height)
+                row_height = height;
+            
+            $(this).attr( "id",'img-'+index );
+            row_image = {
+                "left" : position.left,
+                "top" : position.top,
+                "index" : index,
+                "width" : width,
+                "height"  : height
+            }
+            
+        });    
+        
+        row_images.push(row_image);
+        var row = {
+            'top' :  row_top,
+            'width' : row_width,
+            'height' : row_height,
+            'show' : 'false',
+            'cols' : row_images
+        }
+        imagesLayout.push(row);
+        
+        //call the display images method to show the visible lines
+        displayImages(sz);
     }
     
     
