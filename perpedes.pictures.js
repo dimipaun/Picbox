@@ -1673,7 +1673,7 @@
             if (row.top > bottom) break;
             if (!row.show) {
                 row.show = true;
-                for ( var j = 0; j < row.cols.length; j++){
+                for ( var j = 0; j < row.cols.length; j++) {
                     $('#img-'+row.cols[j].index).attr('src', 
                         autogessPicUrl(search_result.pics[row.cols[j].index], sz));
                 }
@@ -1751,7 +1751,7 @@
             'top' :  row_top,
             'width' : row_width,
             'height' : row_height,
-            'show' : 'false',
+            'show' : false,
             'cols' : row_images
         }
         imagesLayout.push(row);
