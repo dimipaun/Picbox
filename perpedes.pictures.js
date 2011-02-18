@@ -1665,20 +1665,18 @@
 
 
     function displayImages(sz){
-        
-        var top = $('#zb-sall-scroll').scrollTop();
-        var height = $('#zb-sall-scroll').height();
+        var wnd=$('#zb-sall-scroll'), top=wnd.scrollTop(), height=wnd.height(), bottom=top+height, row;
     
         for ( var i = 0; i < imagesLayout.length; i++){
-            var row = imagesLayout[i];
-
-            if ( top <= row.top && row.top <= top+height && row.show == false){
+            row = imagesLayout[i];
+            if (row.bottom < top) continue;
+            if (row.top > bottom) break;
+            if (!row.show) {
                 row.show = true;
                 for ( var j = 0; j < row.cols.length; j++){
                     $('#img-'+row.cols[j].index).attr('src', 
                         autogessPicUrl(search_result.pics[row.cols[j].index], sz));
                 }
-                
             }
         }
     }
