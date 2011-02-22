@@ -1674,8 +1674,9 @@
             if (!row.show) {
                 row.show = true;
                 for ( var j = 0; j < row.cols.length; j++) {
-                    $('#img-'+row.cols[j].index).attr('src', 
-                        autogessPicUrl(search_result.pics[row.cols[j].index], sz));
+			$('#zb-pd-sall-'+search_result.pics[row.cols[j].index].meta.id+' > img' ).each(function() {
+				$(this).attr('src', autogessPicUrl(search_result.pics[row.cols[j].index], sz));
+                            });                        
                 }
             }
         }
@@ -1736,7 +1737,6 @@
             if ( height > row_height)
                 row_height = height;
             
-            $(this).attr( "id",'img-'+index );
             row_image = {
                 "left" : position.left,
                 "top" : position.top,
