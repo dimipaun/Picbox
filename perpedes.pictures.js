@@ -1615,6 +1615,10 @@
         c.html(icons.join(''));
         showall_size = sz;
         showall_populated = true;
+        //Nu sunt sigur ca aici este locul potrivit pt a chema functia cand schimbam marimile dar n-am gasit alt log
+	if ( imagesLayout != null ){
+		populateImageObjects(showall_size)
+	}
 	
     }
 
